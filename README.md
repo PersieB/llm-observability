@@ -323,18 +323,15 @@ This project focuses on request-level observability for a RAG pipeline.
 
 It does not attempt to provide a complete production observability platform. Features such as authentication, distributed tracing, background telemetry queues, alerting, deployment infrastructure, and large-scale traffic management are intentionally outside the current scope.
 
-## Future Research Direction
 
-One direction I am interested in exploring is the trade-off between **observability overhead and reliability**.
+## Future Development
 
-For example, telemetry can be written synchronously during a request, which makes trace persistence straightforward but can add latency. It can also be written asynchronously or in the background, potentially reducing request overhead but introducing the possibility of delayed or lost traces.
+Possible future improvements include:
 
-A future experiment could compare these approaches by measuring:
-
-* Added request latency
-* Trace-write latency
-* Throughput
-* Trace loss
-* Reliability under increasing request loads
-
-This would help quantify how the design of an observability layer affects the application it is intended to monitor.
+* **Richer trace details:** Capture the individual retrieved chunks, similarity scores, and prompt/context information associated with each request.
+* **Historical monitoring:** Add longer-term trends for latency, error rates, token usage, and other performance metrics.
+* **Trace search and advanced filtering:** Support filtering by date, latency range, failure stage, model, and other request attributes.
+* **Trace export:** Allow users to export traces for further analysis and reporting.
+* **Configurable RAG experiments:** Allow users to bring their own documents and configure parameters such as chunk size, `top_k`, embedding models, and LLMs, then observe how those configurations affect application behaviour.
+* **Alerts:** Add configurable thresholds for high latency, elevated error rates, or unusual token usage.
+* **Production deployment:** Deploy the platform with appropriate security, environment management, monitoring, and access controls.
